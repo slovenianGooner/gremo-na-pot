@@ -1,0 +1,340 @@
+:root {
+    --sign-green: #036A32;
+    --sign-green-dark: #024d24;
+    --sign-blue: #0057A8;
+    --sign-yellow: #FFD100;
+    --road-gray: #3b3f42;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--road-gray);
+    color: #fff;
+    min-height: 100vh;
+}
+
+.page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 1.25rem 1rem 3rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-header {
+    text-align: center;
+    padding: 1rem 0 1.5rem;
+}
+
+.app-header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+.app-header a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ---------- Route sign / status flash ---------- */
+.status-banner {
+    background: var(--sign-yellow);
+    color: #1a1a1a;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* ---------- Home / route picker ---------- */
+.route-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.route-card {
+    display: block;
+    background: var(--sign-blue);
+    border: 3px solid #fff;
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.25);
+}
+
+.route-card:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.25);
+}
+
+.route-card .route-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: block;
+}
+
+.route-card .route-meta {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.empty-state {
+    text-align: center;
+    opacity: 0.8;
+    margin-top: 2rem;
+    line-height: 1.6;
+}
+
+/* ---------- Highway road sign (European E-road style) ---------- */
+.sign-stage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.progress-track {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.progress-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    border: 2px solid rgba(255,255,255,0.4);
+}
+
+.progress-dot.is-done {
+    background: var(--sign-yellow);
+    border-color: var(--sign-yellow);
+}
+
+.progress-dot.is-current {
+    background: #fff;
+    border-color: #fff;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.25);
+}
+
+.road-sign {
+    background: var(--sign-green);
+    border: 6px solid #fff;
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 8px 0 rgba(0,0,0,0.3), 0 10px 18px rgba(0,0,0,0.35);
+    position: relative;
+    text-align: center;
+}
+
+.road-sign::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+.road-sign .sign-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #d7f5df;
+    margin-bottom: 0.5rem;
+}
+
+.road-sign .sign-place-name {
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 9vw, 3.2rem);
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1.15;
+    word-break: break-word;
+}
+
+.road-sign .sign-arrow {
+    margin-top: 1rem;
+    font-size: 2rem;
+    color: #fff;
+}
+
+.step-counter {
+    opacity: 0.8;
+    font-size: 0.95rem;
+}
+
+/* ---------- Controls ---------- */
+.controls {
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 480px;
+    margin-top: 0.5rem;
+}
+
+.btn {
+    flex: 1;
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary {
+    background: var(--sign-yellow);
+    color: #1a1a1a;
+    box-shadow: 0 4px 0 #b89400;
+}
+
+.btn-primary:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #b89400;
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.4);
+    flex: 0 0 auto;
+    padding: 1rem 1.2rem;
+}
+
+.btn-secondary:disabled {
+    opacity: 0.35;
+}
+
+/* ---------- Finish screen ---------- */
+.finish-screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.finish-screen .emoji {
+    font-size: 4rem;
+}
+
+.finish-screen h2 {
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+/* ---------- Admin ---------- */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.admin-table th, .admin-table td {
+    text-align: left;
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 480px;
+    margin-top: 1rem;
+}
+
+.admin-form label {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.admin-form input[type=text],
+.admin-form input[type=number] {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    border-radius: 6px;
+    border: 1px solid #999;
+    font-size: 1rem;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.link-btn {
+    background: none;
+    border: none;
+    color: #ffd100;
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+    text-decoration: underline;
+}
+
+.places-manager {
+    margin-top: 1.5rem;
+}
+
+.place-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.place-row input[type=text] {
+    flex: 1;
+    padding: 0.4rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #999;
+}
+
+.place-row input[type=number] {
+    width: 4.5rem;
+    padding: 0.4rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #999;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: #cfd8dc;
+    text-decoration: none;
+}
+
+.top-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
